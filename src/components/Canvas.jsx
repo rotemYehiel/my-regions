@@ -2,9 +2,10 @@ import React, { useEffect, useRef } from "react";
 
 const Canvas = ({ backgroundImageUrl, regions }) => {
   const canvasRef = useRef(null);
+  const contextRef = useRef(null);
   const imageRef = useRef(new Image());
 
-  const setCanvasSize = (ctx) => {
+  const setCanvasSize = () => {
     const canvas = canvasRef.current;
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
@@ -24,50 +25,58 @@ const Canvas = ({ backgroundImageUrl, regions }) => {
     canvas.width = canvasWidth;
     canvas.height = canvasHeight;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(imageRef.current, 0, 0, canvasWidth, canvasHeight);
+    contextRef.current.clearRect(0, 0, canvas.width, canvas.height);
+    contextRef.current.drawImage(
+      imageRef.current,
+      0,
+      0,
+      canvasWidth,
+      canvasHeight
+    );
 
-    drawRegions(ctx, naturalWidth, naturalHeight, canvasWidth, canvasHeight);
+    if (regions.length)
+      regions.forEach((region) => drawRectangle(region.points));
   };
 
-  const drawRegions = (
-    ctx,
-    naturalWidth,
-    naturalHeight,
-    canvasWidth,
-    canvasHeight
-  ) => {
-    regions.forEach((region) => {
-      const [x1, y1, x2, y2] = region.points;
+  const drawRectangle = (points) => {
+    const { naturalWidth, naturalHeight } = imageRef.current;
+    const canvas = canvasRef.current;
 
-      const rectX1 = (x1 / naturalWidth) * canvasWidth;
-      const rectY1 = (y1 / naturalHeight) * canvasHeight;
-      const rectX2 = (x2 / naturalWidth) * canvasWidth;
-      const rectY2 = (y2 / naturalHeight) * canvasHeight;
-
-      const rectWidth = rectX2 - rectX1;
-      const rectHeight = rectY2 - rectY1;
-
-      ctx.strokeStyle = "red";
-      ctx.lineWidth = 2;
-      ctx.strokeRect(rectX1, rectY1, rectWidth, rectHeight);
+    console.log({
+      points,
+      naturalWidth,
+      naturalHeight,
     });
+    const [x1, y1, x2, y2] = points;
+
+    const rectX1 = (x1 / naturalWidth) * canvas.width;
+    const rectY1 = (y1 / naturalHeight) * canvas.height;
+    const rectX2 = (x2 / naturalWidth) * canvas.width;
+    const rectY2 = (y2 / naturalHeight) * canvas.height;
+
+    const rectWidth = rectX2 - rectX1;
+    const rectHeight = rectY2 - rectY1;
+
+    contextRef.current.strokeStyle = "red";
+    contextRef.current.lineWidth = 2;
+    contextRef.current.strokeRect(rectX1, rectY1, rectWidth, rectHeight);
   };
 
-  const loadImage = (ctx) => {
+  const loadImage = () => {
     imageRef.current.src = backgroundImageUrl;
     imageRef.current.onload = () => {
-      setCanvasSize(ctx);
+      setCanvasSize(contextRef.current);
     };
   };
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
+    contextRef.current = canvas.getContext("2d");
 
-    const handleResize = () => setCanvasSize(ctx);
+    const handleResize = () => setCanvasSize();
 
-    loadImage(ctx);
+    loadImage();
+
     window.addEventListener("resize", handleResize);
 
     return () => {
