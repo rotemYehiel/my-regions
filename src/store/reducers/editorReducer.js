@@ -1,5 +1,7 @@
 const initialState = {
   currentImage: null,
+  loading: true,
+  error: null,
 };
 
 const editorReducer = (state = initialState, action) => {
@@ -13,6 +15,13 @@ const editorReducer = (state = initialState, action) => {
       return {
         ...state,
         currentImage: null,
+      };
+
+    case "FETCH_IREGIONS":
+      return {
+        ...state,
+        loading: true,
+        error: null,
       };
 
     default:

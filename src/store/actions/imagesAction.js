@@ -1,7 +1,5 @@
 import axios from "axios";
-
-export const BASE_URL = "https://myregions.azurewebsites.net";
-const GET_IMAGES_API = "/available-images-and-regions";
+import { BASE_URL, GET_IMAGES_API } from "../../constants/api";
 
 export const getImages = () => {
   return async (dispatch) => {

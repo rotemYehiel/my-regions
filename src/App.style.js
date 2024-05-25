@@ -8,19 +8,13 @@ export const AppLayout = styled.div`
   width: 100vw;
 
   > :first-child {
-    flex: 0 0 70vh;
     background-color: red;
+    height: 70%;
   }
 
   > :nth-child(2) {
-    flex: 1 0 auto;
     background-color: pink;
-  }
-
-  @media ${DEVICES.tablet} {
-    > :first-child {
-      flex: 0 0 60vh;
-    }
+    height: 30%;
   }
 
   @media ${DEVICES.desktop} {
@@ -28,13 +22,15 @@ export const AppLayout = styled.div`
 
     > :first-child {
       order: 2;
-      flex: 1 0 auto;
       padding: 1vw 4vw;
+      height: unset;
+      width: 80%;
     }
 
     > :nth-child(2) {
       order: 1;
-      flex: 0 0 20vw;
+      height: unset;
+      width: 20%;
       padding: 1vw 4vw;
     }
   }
