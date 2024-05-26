@@ -7,10 +7,7 @@ import {
   RegionsWrapper,
 } from "./Regions.style";
 
-const Regions = ({ regions, imageContainer }) => {
-  const containerWidth = imageContainer?.current.offsetWidth;
-  const containerHeight = imageContainer?.current.offsetHeight;
-
+const Regions = ({ regions }) => {
   return (
     <RegionsWrapper>
       <RegionsContainer>
@@ -18,12 +15,16 @@ const Regions = ({ regions, imageContainer }) => {
           regions.map((region, index) => {
             const [startX, startY, width, height] = region.points;
 
+            if (index > 0) return;
+            console.log(region.points);
+
             return (
               <RegionWrapper key={region.id}>
                 <RegionLabel $startX={startX} $startY={startY}>
                   {region.label}
                 </RegionLabel>
                 <Region
+                  className="region"
                   $startX={startX}
                   $startY={startY}
                   $width={width}
