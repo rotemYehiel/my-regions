@@ -17,3 +17,15 @@ export const CanvasContainer = styled.div`
   justify-content: center;
   overflow: hidden;
 `;
+
+export const CurrentImageContainer = styled.div`
+  width: 100%;
+  max-height: 100%;
+  height: fit-content;
+  position: relative;
+`;
+
+export const BackgroundImage = styled.img`
+  object-fit: contain;
+  width: 100%;
+`;

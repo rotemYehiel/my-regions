@@ -8,7 +8,7 @@ export const AppLayout = styled.div`
   width: 100vw;
 
   > :first-child {
-    background-color: red;
+    background-color: wheat;
     height: 70%;
   }
 
