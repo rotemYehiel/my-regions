@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BASE_URL, GET_IMAGES_API } from "../../constants/api";
+import { createImage } from "../../functions/utils";
 
 export const getImages = () => {
   return async (dispatch) => {
@@ -19,5 +20,14 @@ export const getImages = () => {
     } catch (error) {
       dispatch({ type: "FETCH_IMAGES_FAILURE", payload: error.message });
     }
+  };
+};
+
+export const addImage = (imageUrl) => {
+  return async (dispatch) => {
+    const newImage = createImage(imageUrl);
+
+    dispatch({ type: "ADD_IMAGE", payload: newImage });
+    dispatch({ type: "SET_CURRENTIMAGE", payload: newImage });
   };
 };

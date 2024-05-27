@@ -1,5 +1,9 @@
 import axios from "axios";
-import { BASE_URL, UPDATE_IMAGE_REGIONS_API } from "../../constants/api";
+import {
+  BASE_URL,
+  POST_IMAGE_API,
+  UPDATE_IMAGE_REGIONS_API,
+} from "../../constants/api";
 
 export const setCurrentImage = (newImage) => {
   return async (dispatch) => {
@@ -29,6 +33,38 @@ export const updateCurrentImage = (id, regions) => {
       dispatch({ type: "RESET_REGIONS" });
     } catch (error) {
       console.error("Error updating image regions:", error);
+    }
+  };
+};
+
+export const postImage = (imageUrl, regions) => {
+  return async (dispatch) => {
+    try {
+      const blobObject = await axios.get(imageUrl, { responseType: "blob" });
+
+      if (blobObject.status !== 200) {
+        throw new Error("Network response was not ok");
+      }
+
+      const config = { headers: { "Content-Type": "multipart/form-data" } };
+      let bodyFormData = new FormData();
+
+      bodyFormData.append("image", blobObject.data, "image.jpg");
+      bodyFormData.append("regions", JSON.stringify(regions));
+
+      const response = await axios.post(
+        `${BASE_URL}${POST_IMAGE_API}`,
+        bodyFormData,
+        config
+      );
+
+      if (response.status !== 200) {
+        throw new Error("Network response was not ok");
+      }
+
+      dispatch({ type: "SET_CURRENTIMAGE", payload: response.data });
+    } catch (error) {
+      console.error("Error post image:", error);
     }
   };
 };

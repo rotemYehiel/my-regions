@@ -70,8 +70,6 @@ const Canvas = ({ containerWidth, containerHeight, setRectanglePoints }) => {
     setRectanglePoints(cordsInPercentage);
   };
 
-  console.log("*** Canvas ***");
-
   return (
     <CanvasWrapper className="canvas wrapper">
       <canvas

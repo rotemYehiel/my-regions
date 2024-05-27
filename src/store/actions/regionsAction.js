@@ -23,6 +23,12 @@ export const getRegions = (imageId) => {
   };
 };
 
+export const getEmptyRegions = () => {
+  return async (dispatch) => {
+    dispatch({ type: "GET_EMPTY__REGIONS" });
+  };
+};
+
 export const resetRegions = () => {
   return async (dispatch) => {
     dispatch({ type: "RESET_REGIONS" });

@@ -14,3 +14,7 @@ export const convertToCordsInPercentage = (cordsInPx, widthRef, heightRef) => {
     return Math.round(cord);
   });
 };
+
+export const createImage = (imageUrl) => {
+  return { image: imageUrl };
+};

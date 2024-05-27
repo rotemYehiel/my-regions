@@ -32,6 +32,13 @@ const regionsReducer = (state = initialState, action) => {
         loading: false,
         error: null,
       };
+    case "GET_EMPTY__REGIONS":
+      return {
+        ...state,
+        regions: [],
+        loading: false,
+        error: null,
+      };
     default:
       return state;
   }

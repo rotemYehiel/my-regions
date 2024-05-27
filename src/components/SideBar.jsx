@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getImages } from "../store/actions/imagesAction";
+import { addImage, getImages } from "../store/actions/imagesAction";
 import { imagesSelector } from "../store/selectors/imagesSelectors";
 import ImageList from "./ImageList";
-import { SideBarContainer } from "./SideBar.style";
+import { SideBarContainer, UploadImageInput } from "./SideBar.style";
 import { currentImageIdSelector } from "../store/selectors/editorSelectors";
 import { setCurrentImage } from "../store/actions/editorAction";
 
@@ -11,13 +11,13 @@ const SideBar = () => {
   const dispatch = useDispatch();
   const images = useSelector(imagesSelector);
   const currentImageId = useSelector(currentImageIdSelector);
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     fetchImages();
   }, []);
 
   const fetchImages = () => {
-    console.log("fetchImages");
     dispatch(getImages());
   };
 
@@ -26,10 +26,26 @@ const SideBar = () => {
     dispatch(setCurrentImage(newImage));
   };
 
-  console.log({ images, currentImageId });
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+
+      dispatch(addImage(imageUrl));
+    }
+  };
+
   return (
     <SideBarContainer>
-      <button>+</button>
+      <>
+        <UploadImageInput
+          type="file"
+          accept="image/*"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+        />
+        <button onClick={() => fileInputRef.current.click()}>+</button>
+      </>
       {images && (
         <ImageList
           images={images}

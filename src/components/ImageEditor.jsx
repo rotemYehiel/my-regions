@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { currentImageSelector } from "../store/selectors/editorSelectors";
@@ -10,9 +10,9 @@ import {
 } from "./ImageEditor.style";
 import Canvas from "./Canvas";
 import { BASE_URL } from "../constants/api";
-import { getRegions } from "../store/actions/regionsAction";
+import { getEmptyRegions, getRegions } from "../store/actions/regionsAction";
 import Regions from "./Regions";
-import { updateCurrentImage } from "../store/actions/editorAction";
+import { postImage, updateCurrentImage } from "../store/actions/editorAction";
 
 const ImageEditor = () => {
   const dispatch = useDispatch();
@@ -28,13 +28,22 @@ const ImageEditor = () => {
   const isEditImage = useMemo(() => !!currentImage?.id, [currentImage]);
 
   useEffect(() => {
-    if (!regions && currentImage && currentImage?.id) {
+    if (!regions && currentImage) {
       getCurrentImageRegions();
     }
   }, [regions, currentImage]);
 
+  const reset = () => {
+    setNewPoints(null);
+    setNewLable("");
+    setContainerWidth(null);
+    setContainerHeight(null);
+  };
+
   const getCurrentImageRegions = () => {
-    dispatch(getRegions(currentImage?.id));
+    currentImage?.id
+      ? dispatch(getRegions(currentImage?.id))
+      : dispatch(getEmptyRegions());
   };
 
   const handleImageLoad = () => {
@@ -54,7 +63,13 @@ const ImageEditor = () => {
       const newRegion = { id: uniqueId, label: newLable, points: newPoints };
       let newRegions = [...regions, newRegion];
 
-      dispatch(updateCurrentImage(currentImage?.id, newRegions));
+      if (currentImage.id) {
+        dispatch(updateCurrentImage(currentImage.id, newRegions));
+      } else {
+        dispatch(postImage(currentImage.image, newRegions));
+      }
+
+      reset();
     }
   };
 
@@ -99,4 +114,4 @@ const ImageEditor = () => {
   );
 };
 
-export default memo(ImageEditor);
+export default ImageEditor;
