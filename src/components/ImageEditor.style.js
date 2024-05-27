@@ -1,11 +1,21 @@
 import styled from "styled-components";
+import { DEVICES } from "../constants/mediaQueries";
 
 export const ImageEditorContainer = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 2vw 2vw;
+  padding: 5vw 2vw;
   row-gap: 2vw;
+`;
+
+export const CurrentImageWrapper = styled.div`
+  padding: 6vw;
+  overflow: hidden;
+  background-color: whitesmoke;
+
+  @media ${DEVICES.desktop} {
+    padding: 2vw;
+  }
 `;
 
 export const CurrentImageContainer = styled.div`

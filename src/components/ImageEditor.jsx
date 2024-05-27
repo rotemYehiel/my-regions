@@ -7,6 +7,7 @@ import {
   ImageEditorContainer,
   CurrentImageContainer,
   BackgroundImage,
+  CurrentImageWrapper,
 } from "./ImageEditor.style";
 import Canvas from "./Canvas";
 import { BASE_URL } from "../constants/api";
@@ -80,28 +81,30 @@ const ImageEditor = () => {
   return (
     <ImageEditorContainer onSubmit={handleSubmit}>
       {currentImage && (
-        <CurrentImageContainer
-          ref={containerRef}
-          className="CurrentImageContainer"
-        >
-          <BackgroundImage
-            src={
-              isEditImage
-                ? `${BASE_URL}/${currentImage?.image}`
-                : currentImage.image
-            }
-            alt={currentImage?.id}
-            onLoad={handleImageLoad}
-          />
-          {regions && <Regions regions={regions} />}
-          {containerWidth && containerHeight && (
-            <Canvas
-              containerWidth={containerWidth}
-              containerHeight={containerHeight}
-              setRectanglePoints={setNewPoints}
+        <CurrentImageWrapper>
+          <CurrentImageContainer
+            ref={containerRef}
+            className="CurrentImageContainer"
+          >
+            <BackgroundImage
+              src={
+                isEditImage
+                  ? `${BASE_URL}/${currentImage?.image}`
+                  : currentImage.image
+              }
+              alt={currentImage?.id}
+              onLoad={handleImageLoad}
             />
-          )}
-        </CurrentImageContainer>
+            {regions && <Regions regions={regions} />}
+            {containerWidth && containerHeight && (
+              <Canvas
+                containerWidth={containerWidth}
+                containerHeight={containerHeight}
+                setRectanglePoints={setNewPoints}
+              />
+            )}
+          </CurrentImageContainer>
+        </CurrentImageWrapper>
       )}
       <input
         placeholder="enter label here"

@@ -6,19 +6,28 @@ export const ImageListContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  overflow-y: scroll;
+  gap: 1vh;
 
   @media ${DEVICES.desktop} {
     flex-wrap: unset;
     flex-direction: column;
+    justify-content: unset;
+    row-gap: 0.5vw;
+    display: unset;
+    overflow-y: scroll;
+    padding: 2vw;
   }
 `;
-
-export const ImageItem = styled.img`
+export const ImageItem = styled.div`
   background-image: ${({ $imageUrl }) => ($imageUrl ? $imageUrl : null)};
   border: 0.5vw solid;
   border-color: ${({ $isCurrentImage }) =>
     $isCurrentImage ? "red" : "transparent"};
   width: 10vh;
   height: 10vh;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
 `;

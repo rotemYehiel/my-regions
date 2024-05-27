@@ -6,15 +6,16 @@ export const AppLayout = styled.div`
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 
   > :first-child {
     background-color: wheat;
-    height: 70%;
+    height: 50vh;
   }
 
   > :nth-child(2) {
     background-color: pink;
-    height: 30%;
+    height: 50vh;
   }
 
   @media ${DEVICES.desktop} {
@@ -23,14 +24,14 @@ export const AppLayout = styled.div`
     > :first-child {
       order: 2;
       padding: 1vw 4vw;
-      height: unset;
-      width: 80%;
+      width: 80vw;
+      height: 100vh;
     }
 
     > :nth-child(2) {
       order: 1;
-      height: unset;
-      width: 20%;
+      width: 20vw;
+      height: 100vh;
       padding: 1vw 4vw;
     }
   }
