@@ -39,6 +39,13 @@ const regionsReducer = (state = initialState, action) => {
         loading: false,
         error: null,
       };
+    case "UPDATE_REGIONS":
+      return {
+        ...state,
+        regions: action.payload,
+        loading: false,
+        error: null,
+      };
     default:
       return state;
   }

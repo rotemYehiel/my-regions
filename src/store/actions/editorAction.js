@@ -30,7 +30,7 @@ export const updateCurrentImage = (id, regions) => {
         throw new Error("Network response was not ok");
       }
 
-      dispatch({ type: "RESET_REGIONS" });
+      dispatch({ type: "UPDATE_REGIONS", payload: regions });
     } catch (error) {
       console.error("Error updating image regions:", error);
     }
