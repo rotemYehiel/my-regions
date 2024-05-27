@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   Region,
   RegionLabel,
@@ -14,9 +14,6 @@ const Regions = ({ regions }) => {
         {regions &&
           regions.map((region, index) => {
             const [startX, startY, width, height] = region.points;
-
-            if (index > 0) return;
-            console.log(region.points);
 
             return (
               <RegionWrapper key={region.id}>
@@ -38,4 +35,4 @@ const Regions = ({ regions }) => {
   );
 };
 
-export default Regions;
+export default memo(Regions);
