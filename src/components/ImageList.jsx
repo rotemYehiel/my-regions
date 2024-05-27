@@ -16,7 +16,7 @@ const ImageList = ({ images, currentImageId, changeCurrentImage }) => {
             src={image?.id ? `${BASE_URL}/${image.image}` : image?.image}
             $isCurrentImage={image.id === currentImageId}
             onClick={() => handleSelectImage(image.id)}
-          ></ImageItem>
+          />
         ))}
     </ImageListContainer>
   );

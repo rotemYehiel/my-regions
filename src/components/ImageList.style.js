@@ -13,15 +13,12 @@ export const ImageListContainer = styled.div`
   }
 `;
 
-export const ImageItem = styled.div`
+export const ImageItem = styled.img`
   background-image: ${({ $imageUrl }) => ($imageUrl ? $imageUrl : null)};
   border: 0.5vw solid;
   border-color: ${({ $isCurrentImage }) =>
     $isCurrentImage ? "red" : "transparent"};
   width: 10vh;
   height: 10vh;
-  background-size: cover;
-  background-position: center;
-  margin: 1vw;
-  cursor: pointer;
+  object-fit: cover;
 `;
