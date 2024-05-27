@@ -31,12 +31,13 @@ const imagesReducer = (state = initialState, action) => {
         loading: false,
         error: null,
       };
+    case "UPDATE_IMAGES":
+      let imagesWithId = state.images.filter((image) => !!image.id);
 
-    case "ADD_IMAGE":
       return {
         ...state,
         loading: false,
-        images: [action.payload, ...state.images],
+        images: [action.payload, ...imagesWithId],
       };
     default:
       return state;

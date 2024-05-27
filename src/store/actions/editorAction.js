@@ -63,6 +63,7 @@ export const postImage = (imageUrl, regions) => {
       }
 
       dispatch({ type: "SET_CURRENTIMAGE", payload: response.data });
+      dispatch({ type: "UPDATE_IMAGES", payload: response.data });
     } catch (error) {
       console.error("Error post image:", error);
     }
