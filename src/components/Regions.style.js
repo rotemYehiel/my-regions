@@ -22,8 +22,8 @@ export const RegionLabel = styled.label`
   width: fit-content;
   height: 16px;
   position: absolute;
-  top: ${({ $startX }) => ($startX ? `calc(${$startX}% - 18px)` : `0`)};
-  left: ${({ $startY }) => ($startY ? `${$startY}%` : `0`)};
+  left: ${({ $startX }) => ($startX ? `${$startX}%` : `0`)};
+  top: ${({ $startY }) => ($startY ? `calc(${$startY}% - 20px)` : `0`)};
   padding: 2px;
 `;
 
