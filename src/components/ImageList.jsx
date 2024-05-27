@@ -4,7 +4,9 @@ import { BASE_URL } from "../constants/api";
 
 const ImageList = ({ images, currentImageId, changeCurrentImage }) => {
   const handleSelectImage = (id) => {
-    changeCurrentImage(id);
+    if (id !== currentImageId) {
+      changeCurrentImage(id);
+    }
   };
 
   return (
