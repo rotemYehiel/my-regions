@@ -58,7 +58,7 @@ const ImageEditor = () => {
   const handleSubmit = (ev) => {
     ev.preventDefault();
 
-    if (newPoints.length && newLable) {
+    if (newPoints?.length && newLable) {
       const uniqueId = uuidv4();
       const newRegion = { id: uniqueId, label: newLable, points: newPoints };
       let newRegions = [...regions, newRegion];
