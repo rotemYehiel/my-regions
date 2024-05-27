@@ -28,10 +28,10 @@ const ImageEditor = () => {
   const isEditImage = useMemo(() => !!currentImage?.id, [currentImage]);
 
   useEffect(() => {
-    if (!regions && currentImage) {
+    if (currentImage) {
       getCurrentImageRegions();
     }
-  }, [regions, currentImage]);
+  }, [currentImage]);
 
   const reset = () => {
     setNewPoints(null);
