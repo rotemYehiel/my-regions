@@ -1,5 +1,6 @@
-import React, { memo, useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 import { currentImageSelector } from "../store/selectors/editorSelectors";
 import { regionsSelector } from "../store/selectors/regionsSelectors";
 import {
@@ -24,6 +25,8 @@ const ImageEditor = () => {
   const [newPoints, setNewPoints] = useState(null);
   const [newLable, setNewLable] = useState("");
 
+  const isEditImage = useMemo(() => !!currentImage?.id, [currentImage]);
+
   useEffect(() => {
     if (!regions && currentImage && currentImage?.id) {
       getCurrentImageRegions();
@@ -35,7 +38,6 @@ const ImageEditor = () => {
   };
 
   const handleImageLoad = () => {
-    console.log("handleImageLoad:", containerRef.current?.offsetHeight);
     setContainerWidth(containerRef.current?.offsetWidth);
     setContainerHeight(containerRef.current?.offsetHeight);
   };
@@ -48,7 +50,8 @@ const ImageEditor = () => {
     ev.preventDefault();
 
     if (newPoints.length && newLable) {
-      const newRegion = { label: newLable, points: newPoints };
+      const uniqueId = uuidv4();
+      const newRegion = { id: uniqueId, label: newLable, points: newPoints };
       let newRegions = [...regions, newRegion];
 
       dispatch(updateCurrentImage(currentImage?.id, newRegions));
@@ -67,7 +70,11 @@ const ImageEditor = () => {
           className="CurrentImageContainer"
         >
           <BackgroundImage
-            src={`${BASE_URL}/${currentImage?.image}`}
+            src={
+              isEditImage
+                ? `${BASE_URL}/${currentImage?.image}`
+                : currentImage.image
+            }
             alt={currentImage?.id}
             onLoad={handleImageLoad}
           />

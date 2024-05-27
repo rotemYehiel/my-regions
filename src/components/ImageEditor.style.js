@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ImageEditorContainer = styled.div`
+export const ImageEditorContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;

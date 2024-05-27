@@ -22,7 +22,11 @@ export const updateCurrentImage = (id, regions) => {
         config
       );
 
-      console.log(response.data);
+      if (response.status !== 200) {
+        throw new Error("Network response was not ok");
+      }
+
+      dispatch({ type: "RESET_REGIONS" });
     } catch (error) {
       console.error("Error updating image regions:", error);
     }
