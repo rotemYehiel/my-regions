@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { STROKE_WIDTH } from "../constants/canvas";
 import { CanvasWrapper } from "./Canvas.style";
+import { convertToCordsInPercentage } from "../functions/utils";
 
-const Canvas = ({ containerWidth, containerHeight }) => {
+const Canvas = ({ containerWidth, containerHeight, setRectanglePoints }) => {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
 
@@ -59,7 +60,17 @@ const Canvas = ({ containerWidth, containerHeight }) => {
     ctx.strokeStyle = "red";
     ctx.lineWidth = STROKE_WIDTH;
     ctx.stroke();
+
+    const cordsInPercentage = convertToCordsInPercentage(
+      cords,
+      canvasRef.current.width,
+      canvasRef.current.height
+    );
+
+    setRectanglePoints(cordsInPercentage);
   };
+
+  console.log("*** Canvas ***");
 
   return (
     <CanvasWrapper className="canvas wrapper">

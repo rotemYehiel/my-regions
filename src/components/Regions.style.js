@@ -33,6 +33,6 @@ export const Region = styled.div`
   background-color: transparent;
   border: 1px solid red;
   position: absolute;
-  top: ${({ $startX }) => ($startX ? `${$startX}%` : `0`)};
-  left: ${({ $startY }) => ($startY ? `${$startY}%` : `0`)};
+  left: ${({ $startX }) => ($startX ? `${$startX}%` : `0`)};
+  top: ${({ $startY }) => ($startY ? `${$startY}%` : `0`)};
 `;
