@@ -46,8 +46,7 @@ const ImageEditor = () => {
   }, [currentImage]);
 
   useEffect(() => {
-    setContainerWidth(containerRef.current?.offsetWidth);
-    setContainerHeight(containerRef.current?.offsetHeight);
+    updateContainerDimensions();
   }, [windowWidth, windowHeight]);
 
   const getCurrentImageRegions = () => {
@@ -56,7 +55,7 @@ const ImageEditor = () => {
       : dispatch(getEmptyRegions());
   };
 
-  const handleImageLoad = () => {
+  const updateContainerDimensions = () => {
     setContainerWidth(containerRef.current?.offsetWidth);
     setContainerHeight(containerRef.current?.offsetHeight);
   };
@@ -105,7 +104,7 @@ const ImageEditor = () => {
                   : currentImage.image
               }
               alt={currentImage?.id}
-              onLoad={handleImageLoad}
+              onLoad={updateContainerDimensions}
             />
             {regions && <Regions regions={regions} />}
             {containerWidth && containerHeight && (
