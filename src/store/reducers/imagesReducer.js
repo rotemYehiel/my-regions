@@ -39,6 +39,12 @@ const imagesReducer = (state = initialState, action) => {
         loading: false,
         images: [action.payload, ...imagesWithId],
       };
+    case "ADD_IMAGE":
+      return {
+        ...state,
+        loading: false,
+        images: [action.payload, ...state.images],
+      };
     default:
       return state;
   }
