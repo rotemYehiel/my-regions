@@ -28,9 +28,3 @@ export const getEmptyRegions = () => {
     dispatch({ type: "GET_EMPTY__REGIONS" });
   };
 };
-
-export const resetRegions = () => {
-  return async (dispatch) => {
-    dispatch({ type: "RESET_REGIONS" });
-  };
-};
