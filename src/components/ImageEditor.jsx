@@ -36,6 +36,10 @@ const ImageEditor = () => {
     if (currentImage) {
       getCurrentImageRegions();
     }
+
+    return () => {
+      reset();
+    };
   }, [currentImage]);
 
   useEffect(() => {
