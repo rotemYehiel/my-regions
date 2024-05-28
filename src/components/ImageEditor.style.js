@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import { DEVICES } from "../constants/mediaQueries";
+import { TextInput } from "../GlobalStyle.style";
 
 export const ImageEditorContainer = styled.form`
   display: flex;
   flex-direction: column;
   padding: 5vw 2vw;
   row-gap: 2vw;
+
+  ${TextInput} {
+    width: 60%;
+  }
 `;
 
 export const CurrentImageWrapper = styled.div`

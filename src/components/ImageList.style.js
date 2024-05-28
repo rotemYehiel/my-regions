@@ -20,7 +20,7 @@ export const ImageListContainer = styled.div`
   }
 `;
 export const ImageItem = styled.div`
-  background-image: ${({ $imageUrl }) => ($imageUrl ? $imageUrl : null)};
+  background-image: ${({ $imageUrl }) => ($imageUrl ? $imageUrl : "unset")};
   border: 0.5vw solid;
   border-color: ${({ $isCurrentImage }) =>
     $isCurrentImage ? "#5f7e92" : "transparent"};

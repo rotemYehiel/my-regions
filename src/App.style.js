@@ -11,6 +11,7 @@ export const AppLayout = styled.div`
   > :first-child {
     background-color: #b1d0e2;
     height: 50vh;
+    align-items: center;
   }
 
   > :nth-child(2) {
@@ -26,6 +27,7 @@ export const AppLayout = styled.div`
       padding: 1vw 4vw;
       width: 80vw;
       height: 100vh;
+      align-items: unset;
     }
 
     > :nth-child(2) {
