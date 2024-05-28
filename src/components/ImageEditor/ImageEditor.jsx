@@ -23,9 +23,9 @@ import useWindowResize from "../../hooks/useWindowResize";
 const ImageEditor = () => {
   const dispatch = useDispatch();
   const currentImage = useSelector(currentImageSelector);
-  const containerRef = useRef(null);
   const regions = useSelector(regionsSelector);
   const { width: windowWidth, height: windowHeight } = useWindowResize();
+  const containerRef = useRef(null);
 
   const [containerWidth, setContainerWidth] = useState(null);
   const [containerHeight, setContainerHeight] = useState(null);
