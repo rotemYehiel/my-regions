@@ -9,7 +9,7 @@ export const convertToCordsInPercentage = (cordsInPx, widthRef, heightRef) => {
 
       cord = newCord;
     }
-    return Math.round(cord);
+    return cord;
   });
 };
 
@@ -28,6 +28,6 @@ export const convertToCordsInPixel = (
 
       cord = newCord;
     }
-    return Math.round(cord);
+    return cord;
   });
 };
