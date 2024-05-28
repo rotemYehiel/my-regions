@@ -16,14 +16,6 @@ const editorReducer = (state = initialState, action) => {
         ...state,
         currentImage: null,
       };
-
-    case "FETCH_IREGIONS":
-      return {
-        ...state,
-        loading: true,
-        error: null,
-      };
-
     default:
       return state;
   }

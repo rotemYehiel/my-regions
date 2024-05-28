@@ -6,7 +6,7 @@ const initialState = {
 
 const regionsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_IREGIONS":
+    case "FETCH_REGIONS":
       return {
         ...state,
         loading: true,

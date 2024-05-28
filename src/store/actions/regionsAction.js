@@ -3,7 +3,7 @@ import { BASE_URL, GET_IMAGE_REGIONS_API } from "../../constants/api";
 
 export const getRegions = (imageId) => {
   return async (dispatch) => {
-    dispatch({ type: "FETCH_IREGIONS" });
+    dispatch({ type: "FETCH_REGIONS" });
 
     try {
       const response = await axios.get(
