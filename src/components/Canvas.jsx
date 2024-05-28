@@ -1,9 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 import { STROKE_WIDTH } from "../constants/canvas";
 import { CanvasWrapper } from "./Canvas.style";
 import { convertToCordsInPercentage } from "../functions/utils";
 
-const Canvas = ({ containerWidth, containerHeight, setRectanglePoints }) => {
+const Canvas = ({
+  containerWidth,
+  containerHeight,
+  setRectanglePoints,
+  isReset,
+  setIsReset,
+}) => {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
 
@@ -22,6 +28,10 @@ const Canvas = ({ containerWidth, containerHeight, setRectanglePoints }) => {
     const context = canvas.getContext("2d");
     contextRef.current = context;
   }, [containerWidth, containerHeight]);
+
+  useEffect(() => {
+    if (isReset) clearDrawings();
+  }, [isReset]);
 
   const startDrawingRectangle = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
@@ -46,10 +56,8 @@ const Canvas = ({ containerWidth, containerHeight, setRectanglePoints }) => {
     if (!isDrawing) return;
     setIsDrawing(false);
 
-    // beacuse i need to create only one region in each call
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
 
-    // Draw rectangle
     let width = endX.current - startX.current;
     let height = endY.current - startY.current;
 
@@ -70,6 +78,13 @@ const Canvas = ({ containerWidth, containerHeight, setRectanglePoints }) => {
     setRectanglePoints(cordsInPercentage);
   };
 
+  const clearDrawings = () => {
+    const ctx = contextRef.current;
+    ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+
+    setIsReset(false);
+  };
+
   return (
     <CanvasWrapper className="canvas wrapper">
       <canvas
@@ -84,4 +99,4 @@ const Canvas = ({ containerWidth, containerHeight, setRectanglePoints }) => {
   );
 };
 
-export default Canvas;
+export default memo(Canvas);

@@ -26,6 +26,7 @@ const ImageEditor = () => {
   const [containerHeight, setContainerHeight] = useState(null);
   const [newPoints, setNewPoints] = useState(null);
   const [newLable, setNewLable] = useState("");
+  const [isReset, setIsReset] = useState(false);
 
   const isEditImage = useMemo(() => !!currentImage?.id, [currentImage]);
 
@@ -34,13 +35,6 @@ const ImageEditor = () => {
       getCurrentImageRegions();
     }
   }, [currentImage]);
-
-  const reset = () => {
-    setNewPoints(null);
-    setNewLable("");
-    setContainerWidth(null);
-    setContainerHeight(null);
-  };
 
   const getCurrentImageRegions = () => {
     currentImage?.id
@@ -75,6 +69,12 @@ const ImageEditor = () => {
     }
   };
 
+  const reset = () => {
+    setNewPoints(null);
+    setNewLable("");
+    setIsReset(true);
+  };
+
   if (!currentImage) {
     return <div>Loading...</div>;
   }
@@ -102,6 +102,8 @@ const ImageEditor = () => {
                 containerWidth={containerWidth}
                 containerHeight={containerHeight}
                 setRectanglePoints={setNewPoints}
+                isReset={isReset}
+                setIsReset={setIsReset}
               />
             )}
           </CurrentImageContainer>
