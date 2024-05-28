@@ -31,7 +31,3 @@ export const convertToCordsInPixel = (
     return Math.round(cord);
   });
 };
-
-export const createImage = (imageUrl) => {
-  return { image: imageUrl };
-};
