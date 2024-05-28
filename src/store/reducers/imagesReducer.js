@@ -1,3 +1,11 @@
+import {
+  ADD_IMAGE,
+  FETCH_IMAGES,
+  FETCH_IMAGES_FAILURE,
+  FETCH_IMAGES_SUCCESS,
+  UPDATE_IMAGES,
+} from "../../components/actionType";
+
 const initialState = {
   images: null,
   loading: false,
@@ -6,32 +14,25 @@ const initialState = {
 
 const imagesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_IMAGES":
+    case FETCH_IMAGES:
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case "FETCH_IMAGES_SUCCESS":
+    case FETCH_IMAGES_SUCCESS:
       return {
         ...state,
         loading: false,
         images: action.payload,
       };
-    case "FETCH_IMAGES_FAILURE":
+    case FETCH_IMAGES_FAILURE:
       return {
         ...state,
         loading: false,
         error: action.payload,
       };
-    case "RESET_IMAGES":
-      return {
-        ...state,
-        images: null,
-        loading: false,
-        error: null,
-      };
-    case "UPDATE_IMAGES":
+    case UPDATE_IMAGES:
       let imagesWithId = state.images.filter((image) => !!image.id);
 
       return {
@@ -39,7 +40,7 @@ const imagesReducer = (state = initialState, action) => {
         loading: false,
         images: [action.payload, ...imagesWithId],
       };
-    case "ADD_IMAGE":
+    case ADD_IMAGE:
       return {
         ...state,
         loading: false,

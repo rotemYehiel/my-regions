@@ -1,3 +1,8 @@
+import {
+  RESET_CURRENTIMAGE,
+  SET_CURRENTIMAGE,
+} from "../../components/actionType";
+
 const initialState = {
   currentImage: null,
   loading: true,
@@ -6,12 +11,12 @@ const initialState = {
 
 const editorReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_CURRENTIMAGE":
+    case SET_CURRENTIMAGE:
       return {
         ...state,
         currentImage: action.payload,
       };
-    case "RESET_CURRENTIMAGE":
+    case RESET_CURRENTIMAGE:
       return {
         ...state,
         currentImage: null,

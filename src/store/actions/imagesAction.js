@@ -1,9 +1,16 @@
 import axios from "axios";
 import { BASE_URL, GET_IMAGES_API } from "../../constants/api";
+import {
+  ADD_IMAGE,
+  FETCH_IMAGES,
+  FETCH_IMAGES_FAILURE,
+  FETCH_IMAGES_SUCCESS,
+  SET_CURRENTIMAGE,
+} from "../../components/actionType";
 
 export const getImages = () => {
   return async (dispatch) => {
-    dispatch({ type: "FETCH_IMAGES" });
+    dispatch({ type: FETCH_IMAGES });
 
     try {
       const response = await axios.get(`${BASE_URL}${GET_IMAGES_API}`);
@@ -13,11 +20,11 @@ export const getImages = () => {
       }
 
       if (response.data) {
-        dispatch({ type: "FETCH_IMAGES_SUCCESS", payload: response.data });
-        dispatch({ type: "SET_CURRENTIMAGE", payload: response.data[0] });
+        dispatch({ type: FETCH_IMAGES_SUCCESS, payload: response.data });
+        dispatch({ type: SET_CURRENTIMAGE, payload: response.data[0] });
       }
     } catch (error) {
-      dispatch({ type: "FETCH_IMAGES_FAILURE", payload: error.message });
+      dispatch({ type: FETCH_IMAGES_FAILURE, payload: error.message });
     }
   };
 };
@@ -26,7 +33,7 @@ export const addImage = (imageUrl) => {
   return async (dispatch) => {
     const newImage = { image: imageUrl };
 
-    dispatch({ type: "ADD_IMAGE", payload: newImage });
-    dispatch({ type: "SET_CURRENTIMAGE", payload: newImage });
+    dispatch({ type: ADD_IMAGE, payload: newImage });
+    dispatch({ type: SET_CURRENTIMAGE, payload: newImage });
   };
 };
