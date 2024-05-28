@@ -15,12 +15,14 @@ import { getEmptyRegions, getRegions } from "../store/actions/regionsAction";
 import Regions from "./Regions";
 import { postImage, updateCurrentImage } from "../store/actions/editorAction";
 import { Button, TextInput } from "../GlobalStyle.style";
+import useWindowResize from "../hooks/useWindowResize";
 
 const ImageEditor = () => {
   const dispatch = useDispatch();
   const currentImage = useSelector(currentImageSelector);
   const containerRef = useRef(null);
   const regions = useSelector(regionsSelector);
+  const { width: windowWidth, height: windowHeight } = useWindowResize();
 
   const [containerWidth, setContainerWidth] = useState(null);
   const [containerHeight, setContainerHeight] = useState(null);
@@ -35,6 +37,11 @@ const ImageEditor = () => {
       getCurrentImageRegions();
     }
   }, [currentImage]);
+
+  useEffect(() => {
+    setContainerWidth(containerRef.current?.offsetWidth);
+    setContainerHeight(containerRef.current?.offsetHeight);
+  }, [windowWidth, windowHeight]);
 
   const getCurrentImageRegions = () => {
     currentImage?.id
@@ -104,6 +111,7 @@ const ImageEditor = () => {
                 setRectanglePoints={setNewPoints}
                 isReset={isReset}
                 setIsReset={setIsReset}
+                rectanglePoints={newPoints}
               />
             )}
           </CurrentImageContainer>

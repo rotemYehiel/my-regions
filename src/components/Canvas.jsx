@@ -1,7 +1,10 @@
 import React, { memo, useEffect, useRef, useState } from "react";
 import { STROKE_WIDTH } from "../constants/canvas";
 import { CanvasWrapper } from "./Canvas.style";
-import { convertToCordsInPercentage } from "../functions/utils";
+import {
+  convertToCordsInPercentage,
+  convertToCordsInPixel,
+} from "../functions/utils";
 
 const Canvas = ({
   containerWidth,
@@ -9,6 +12,7 @@ const Canvas = ({
   setRectanglePoints,
   isReset,
   setIsReset,
+  rectanglePoints,
 }) => {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
@@ -27,11 +31,31 @@ const Canvas = ({
 
     const context = canvas.getContext("2d");
     contextRef.current = context;
+
+    if (rectanglePoints) {
+      reDrawingRectangle();
+    }
   }, [containerWidth, containerHeight]);
 
   useEffect(() => {
     if (isReset) clearDrawings();
   }, [isReset]);
+
+  const reDrawingRectangle = () => {
+    const ctx = contextRef.current;
+
+    let cords = convertToCordsInPixel(
+      rectanglePoints,
+      containerWidth,
+      containerHeight
+    );
+
+    ctx.beginPath();
+    ctx.rect(...cords);
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = STROKE_WIDTH;
+    ctx.stroke();
+  };
 
   const startDrawingRectangle = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
