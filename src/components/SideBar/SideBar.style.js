@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { DEVICES } from "../constants/mediaQueries";
-import { Button } from "../GlobalStyle.style";
+import { DEVICES } from "../../constants/mediaQueries";
+import { Button } from "../../GlobalStyle.style";
 
 export const SideBarContainer = styled.div`
   display: flex;

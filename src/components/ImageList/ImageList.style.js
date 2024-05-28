@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { DEVICES } from "../constants/mediaQueries";
+import { DEVICES } from "../../constants/mediaQueries";
 
 export const ImageListContainer = styled.div`
   display: flex;

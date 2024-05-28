@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { DEVICES } from "../constants/mediaQueries";
-import { TextInput } from "../GlobalStyle.style";
+import { DEVICES } from "../../constants/mediaQueries";
+import { TextInput } from "../../GlobalStyle.style";
 
 export const ImageEditorContainer = styled.form`
   display: flex;

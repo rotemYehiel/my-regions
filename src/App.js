@@ -1,6 +1,6 @@
-import SideBar from "./components/SideBar";
+import SideBar from "./components/SideBar/SideBar";
 import { AppLayout } from "./App.style";
-import ImageEditor from "./components/ImageEditor";
+import ImageEditor from "./components/ImageEditor/ImageEditor";
 import { GlobalStyle } from "./GlobalStyle.style";
 
 function App() {

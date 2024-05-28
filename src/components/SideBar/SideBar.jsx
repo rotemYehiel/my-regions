@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addImage, getImages } from "../store/actions/imagesAction";
-import { imagesSelector } from "../store/selectors/imagesSelectors";
-import ImageList from "./ImageList";
+import { addImage, getImages } from "../../store/actions/imagesAction";
+import { imagesSelector } from "../../store/selectors/imagesSelectors";
+import ImageList from "../ImageList/ImageList";
 import { SideBarContainer, UploadImageInput } from "./SideBar.style";
-import { currentImageIdSelector } from "../store/selectors/editorSelectors";
-import { setCurrentImage } from "../store/actions/editorAction";
-import { Button } from "../GlobalStyle.style";
+import { currentImageIdSelector } from "../../store/selectors/editorSelectors";
+import { setCurrentImage } from "../../store/actions/editorAction";
+import { Button } from "../../GlobalStyle.style";
 
 const SideBar = () => {
   const dispatch = useDispatch();

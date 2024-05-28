@@ -1,6 +1,6 @@
 import React from "react";
 import { ImageListContainer, ImageItem } from "./ImageList.style";
-import { BASE_URL } from "../constants/api";
+import { BASE_URL } from "../../constants/api";
 
 const ImageList = ({ images, currentImageId, changeCurrentImage }) => {
   const handleSelectImage = (id) => {

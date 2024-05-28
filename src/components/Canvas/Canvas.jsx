@@ -1,10 +1,10 @@
 import React, { memo, useEffect, useRef, useState } from "react";
-import { STROKE_WIDTH } from "../constants/canvas";
+import { STROKE_WIDTH } from "../../constants/canvas";
 import { CanvasWrapper } from "./Canvas.style";
 import {
   convertToCordsInPercentage,
   convertToCordsInPixel,
-} from "../functions/utils";
+} from "../../functions/utils";
 
 const Canvas = ({
   containerWidth,

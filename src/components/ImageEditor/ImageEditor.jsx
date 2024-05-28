@@ -1,21 +1,24 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { currentImageSelector } from "../store/selectors/editorSelectors";
-import { regionsSelector } from "../store/selectors/regionsSelectors";
+import { currentImageSelector } from "../../store/selectors/editorSelectors";
+import { regionsSelector } from "../../store/selectors/regionsSelectors";
 import {
   ImageEditorContainer,
   CurrentImageContainer,
   BackgroundImage,
   CurrentImageWrapper,
 } from "./ImageEditor.style";
-import Canvas from "./Canvas";
-import { BASE_URL } from "../constants/api";
-import { getEmptyRegions, getRegions } from "../store/actions/regionsAction";
-import Regions from "./Regions";
-import { postImage, updateCurrentImage } from "../store/actions/editorAction";
-import { Button, TextInput } from "../GlobalStyle.style";
-import useWindowResize from "../hooks/useWindowResize";
+import Canvas from "../Canvas/Canvas";
+import { BASE_URL } from "../../constants/api";
+import { getEmptyRegions, getRegions } from "../../store/actions/regionsAction";
+import Regions from "../Regions/Regions";
+import {
+  postImage,
+  updateCurrentImage,
+} from "../../store/actions/editorAction";
+import { Button, TextInput } from "../../GlobalStyle.style";
+import useWindowResize from "../../hooks/useWindowResize";
 
 const ImageEditor = () => {
   const dispatch = useDispatch();
