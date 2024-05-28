@@ -110,9 +110,8 @@ const Canvas = ({
   };
 
   return (
-    <CanvasWrapper className="canvas wrapper">
+    <CanvasWrapper>
       <canvas
-        className="canvas"
         ref={canvasRef}
         onMouseDown={startDrawingRectangle}
         onMouseMove={drawRectangle}

@@ -21,7 +21,6 @@ const Regions = ({ regions }) => {
                   {region.label}
                 </RegionLabel>
                 <Region
-                  className="region"
                   $startX={startX}
                   $startY={startY}
                   $width={width}

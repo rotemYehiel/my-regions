@@ -97,10 +97,7 @@ const ImageEditor = () => {
     <ImageEditorContainer onSubmit={handleSubmit}>
       {currentImage && (
         <CurrentImageWrapper>
-          <CurrentImageContainer
-            ref={containerRef}
-            className="CurrentImageContainer"
-          >
+          <CurrentImageContainer ref={containerRef}>
             <BackgroundImage
               src={
                 isEditImage
