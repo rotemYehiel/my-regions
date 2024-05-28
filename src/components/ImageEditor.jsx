@@ -14,6 +14,7 @@ import { BASE_URL } from "../constants/api";
 import { getEmptyRegions, getRegions } from "../store/actions/regionsAction";
 import Regions from "./Regions";
 import { postImage, updateCurrentImage } from "../store/actions/editorAction";
+import { Button, TextInput } from "../GlobalStyle.style";
 
 const ImageEditor = () => {
   const dispatch = useDispatch();
@@ -106,13 +107,13 @@ const ImageEditor = () => {
           </CurrentImageContainer>
         </CurrentImageWrapper>
       )}
-      <input
+      <TextInput
         placeholder="enter label here"
         value={newLable}
         onChange={handleLabelChange}
       />
 
-      <button type="submit">save</button>
+      <Button type="submit">save</Button>
     </ImageEditorContainer>
   );
 };

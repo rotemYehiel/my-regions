@@ -9,12 +9,12 @@ export const AppLayout = styled.div`
   overflow: hidden;
 
   > :first-child {
-    background-color: wheat;
+    background-color: #b1d0e2;
     height: 50vh;
   }
 
   > :nth-child(2) {
-    background-color: pink;
+    background-color: #cde3f1;
     height: 50vh;
   }
 

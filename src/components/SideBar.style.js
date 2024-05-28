@@ -9,6 +9,7 @@ export const SideBarContainer = styled.div`
 
   @media ${DEVICES.desktop} {
     align-items: center;
+    row-gap: 1vw;
   }
 `;
 

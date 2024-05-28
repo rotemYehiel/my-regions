@@ -19,7 +19,6 @@ export const CurrentImageWrapper = styled.div`
 `;
 
 export const CurrentImageContainer = styled.div`
-  width: 100%;
   max-height: 100%;
   height: fit-content;
   position: relative;

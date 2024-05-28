@@ -6,6 +6,7 @@ import ImageList from "./ImageList";
 import { SideBarContainer, UploadImageInput } from "./SideBar.style";
 import { currentImageIdSelector } from "../store/selectors/editorSelectors";
 import { setCurrentImage } from "../store/actions/editorAction";
+import { Button } from "../GlobalStyle.style";
 
 const SideBar = () => {
   const dispatch = useDispatch();
@@ -44,7 +45,7 @@ const SideBar = () => {
           ref={fileInputRef}
           onChange={handleFileChange}
         />
-        <button onClick={() => fileInputRef.current.click()}>+</button>
+        <Button onClick={() => fileInputRef.current.click()}>+</Button>
       </>
       {images && (
         <ImageList

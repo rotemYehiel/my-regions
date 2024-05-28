@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 body {
@@ -47,4 +47,28 @@ body {
     color: inherit; 
     font-family: inherit; 
   }
+`;
+
+export const Button = styled.button`
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  width: fit-content;
+  border-radius: 4px;
+
+  background-color: #171d1c;
+  color: white;
+
+  &:hover {
+    background-color: #72a4c2;
+    color: #fff;
+  }
+`;
+
+export const TextInput = styled.input`
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  width: 20%;
+  border-radius: 4px;
 `;
