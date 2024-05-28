@@ -5,7 +5,7 @@ import {
   FETCH_REGIONS_FAILURE,
   FETCH_REGIONS_SUCCESS,
   GET_EMPTY_REGIONS,
-} from "../../components/actionType";
+} from "../../constants/actionType";
 
 export const getRegions = (imageId) => {
   return async (dispatch) => {

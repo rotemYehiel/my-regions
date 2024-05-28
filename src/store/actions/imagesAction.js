@@ -6,7 +6,7 @@ import {
   FETCH_IMAGES_FAILURE,
   FETCH_IMAGES_SUCCESS,
   SET_CURRENTIMAGE,
-} from "../../components/actionType";
+} from "../../constants/actionType";
 
 export const getImages = () => {
   return async (dispatch) => {

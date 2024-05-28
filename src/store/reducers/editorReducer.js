@@ -1,7 +1,7 @@
 import {
   RESET_CURRENTIMAGE,
   SET_CURRENTIMAGE,
-} from "../../components/actionType";
+} from "../../constants/actionType";
 
 const initialState = {
   currentImage: null,

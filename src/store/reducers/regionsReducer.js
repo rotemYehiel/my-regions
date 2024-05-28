@@ -5,7 +5,7 @@ import {
   GET_EMPTY_REGIONS,
   RESET_REGIONS,
   UPDATE_REGIONS,
-} from "../../components/actionType";
+} from "../../constants/actionType";
 
 const initialState = {
   regions: null,

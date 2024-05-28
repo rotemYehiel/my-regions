@@ -9,7 +9,7 @@ import {
   SET_CURRENTIMAGE,
   UPDATE_IMAGES,
   UPDATE_REGIONS,
-} from "../../components/actionType";
+} from "../../constants/actionType";
 
 export const setCurrentImage = (newImage) => {
   return async (dispatch) => {

@@ -4,7 +4,7 @@ import {
   FETCH_IMAGES_FAILURE,
   FETCH_IMAGES_SUCCESS,
   UPDATE_IMAGES,
-} from "../../components/actionType";
+} from "../../constants/actionType";
 
 const initialState = {
   images: null,
