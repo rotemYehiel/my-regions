@@ -20,18 +20,18 @@ export const RegionLabel = styled.label`
   background-color: red;
   color: white;
   width: fit-content;
-  height: 16px;
+  height: 1rem;
   position: absolute;
   left: ${({ $startX }) => ($startX ? `${$startX}%` : `0`)};
-  top: ${({ $startY }) => ($startY ? `calc(${$startY}% - 20px)` : `0`)};
-  padding: 2px;
+  top: ${({ $startY }) => ($startY ? `calc(${$startY}% - 1.25rem)` : `0`)};
+  padding: 0.125rem;
 `;
 
 export const Region = styled.div`
   width: ${({ $width }) => ($width ? `${$width}%` : `0`)};
   height: ${({ $height }) => ($height ? `${$height}%` : `0`)};
   background-color: transparent;
-  border: 1px solid red;
+  border: 0.063rem solid red;
   position: absolute;
   left: ${({ $startX }) => ($startX ? `${$startX}%` : `0`)};
   top: ${({ $startY }) => ($startY ? `${$startY}%` : `0`)};

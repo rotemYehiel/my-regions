@@ -5,8 +5,8 @@ import { Button } from "../../GlobalStyle.style";
 export const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 5vw 2vw;
-  row-gap: 2vw;
+  padding: 1.5rem 0.6rem;
+  row-gap: 0.6rem;
 
   > ${Button} {
     position: absolute;
@@ -16,7 +16,7 @@ export const SideBarContainer = styled.div`
 
   @media ${DEVICES.desktop} {
     align-items: center;
-    row-gap: 1vw;
+    row-gap: 0.64rem;
 
     > ${Button} {
       position: unset;

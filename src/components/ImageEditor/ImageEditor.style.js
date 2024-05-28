@@ -5,8 +5,8 @@ import { TextInput } from "../../GlobalStyle.style";
 export const ImageEditorContainer = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 5vw 2vw;
-  row-gap: 2vw;
+  padding: 1.5rem 0.6rem;
+  row-gap: 0.6rem;
 
   ${TextInput} {
     width: 60%;
@@ -14,12 +14,12 @@ export const ImageEditorContainer = styled.form`
 `;
 
 export const CurrentImageWrapper = styled.div`
-  padding: 6vw;
+  padding: 1.8rem;
   overflow: hidden;
   background-color: whitesmoke;
 
   @media ${DEVICES.desktop} {
-    padding: 2vw;
+    padding: 1.28rem;
   }
 `;
 

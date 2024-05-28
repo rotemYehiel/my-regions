@@ -8,6 +8,7 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
   }
   
   code {
@@ -50,11 +51,11 @@ body {
 `;
 
 export const Button = styled.button`
-  padding: 10px 15px;
-  font-size: 16px;
-  border: 1px solid #ccc;
+  padding: 0.625rem 0.938rem;
+  font-size: 1rem;
+  border: 0.063rem solid #ccc;
   width: fit-content;
-  border-radius: 4px;
+  border-radius: 0.25rem;
 
   background-color: #171d1c;
   color: white;
@@ -66,9 +67,9 @@ export const Button = styled.button`
 `;
 
 export const TextInput = styled.input`
-  padding: 10px 15px;
-  font-size: 16px;
-  border: 1px solid #ccc;
+  padding: 0.625rem 0.938rem;
+  font-size: 1rem;
+  border: 0.063rem solid #ccc;
   width: 20%;
-  border-radius: 4px;
+  border-radius: 0.25rem;
 `;

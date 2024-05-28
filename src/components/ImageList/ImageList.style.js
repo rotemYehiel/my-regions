@@ -7,21 +7,21 @@ export const ImageListContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   overflow-y: scroll;
-  gap: 1vh;
+  gap: 0.625rem;
 
   @media ${DEVICES.desktop} {
     flex-wrap: unset;
     flex-direction: column;
     justify-content: unset;
-    row-gap: 0.5vw;
+    row-gap: 0.32rem;
     display: unset;
     overflow-y: scroll;
-    padding: 2vw;
+    padding: 1.28rem;
   }
 `;
 export const ImageItem = styled.div`
   background-image: ${({ $imageUrl }) => ($imageUrl ? $imageUrl : "unset")};
-  border: 0.5vw solid;
+  border: 0.15rem solid;
   border-color: ${({ $isCurrentImage }) =>
     $isCurrentImage ? "#5f7e92" : "transparent"};
   width: 10vh;

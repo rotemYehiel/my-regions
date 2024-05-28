@@ -24,7 +24,7 @@ export const AppLayout = styled.div`
 
     > :first-child {
       order: 2;
-      padding: 1vw 4vw;
+      padding: 0.64rem 2.56rem;
       width: 80vw;
       height: 100vh;
       align-items: unset;
@@ -34,7 +34,7 @@ export const AppLayout = styled.div`
       order: 1;
       width: 20vw;
       height: 100vh;
-      padding: 1vw 4vw;
+      padding: 0.64rem 2.56rem;
     }
   }
 `;
