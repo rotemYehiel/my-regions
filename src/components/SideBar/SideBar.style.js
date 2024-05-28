@@ -7,11 +7,20 @@ export const SideBarContainer = styled.div`
   flex-direction: column;
   padding: 1.5rem 0.6rem;
   row-gap: 0.6rem;
+  position: relative;
 
   > ${Button} {
     position: absolute;
     right: 10%;
     bottom: 5%;
+  }
+
+  @media ${DEVICES.tablet} {
+    > ${Button} {
+      bottom: unset;
+      right: 10%;
+      top: 50%;
+    }
   }
 
   @media ${DEVICES.desktop} {

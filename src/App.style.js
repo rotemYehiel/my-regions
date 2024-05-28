@@ -19,6 +19,16 @@ export const AppLayout = styled.div`
     height: 50vh;
   }
 
+  @media ${DEVICES.tablet} {
+    > :first-child {
+      height: 70vh;
+    }
+
+    > :nth-child(2) {
+      height: 30vh;
+    }
+  }
+
   @media ${DEVICES.desktop} {
     flex-direction: row;
 
