@@ -57,21 +57,32 @@ const Canvas = ({
     ctx.stroke();
   };
 
-  const startDrawingRectangle = ({ nativeEvent }) => {
-    const { offsetX, offsetY } = nativeEvent;
+  const startDrawingRectangle = (ev) => {
+    const { nativeEvent } = ev;
 
-    startX.current = offsetX;
-    startY.current = offsetY;
+    const { clientX, clientY } = nativeEvent?.touches
+      ? nativeEvent?.touches[0]
+      : nativeEvent;
+    const { left, top } = canvasRef.current.getBoundingClientRect();
+
+    startX.current = clientX - left;
+    startY.current = clientY - top;
 
     setIsDrawing(true);
   };
 
-  const drawRectangle = ({ nativeEvent }) => {
+  const drawRectangle = (ev) => {
+    const { nativeEvent } = ev;
     if (!isDrawing) return;
-    const { offsetX, offsetY } = nativeEvent;
 
-    endX.current = offsetX;
-    endY.current = offsetY;
+    const { clientX, clientY } = nativeEvent?.touches
+      ? nativeEvent?.touches[0]
+      : nativeEvent;
+
+    const { left, top } = canvasRef.current.getBoundingClientRect();
+
+    endX.current = clientX - left;
+    endY.current = clientY - top;
   };
 
   const stopDrawingRectangle = () => {
@@ -117,6 +128,9 @@ const Canvas = ({
         onMouseMove={drawRectangle}
         onMouseUp={stopDrawingRectangle}
         onMouseLeave={stopDrawingRectangle}
+        onTouchStart={startDrawingRectangle}
+        onTouchMove={drawRectangle}
+        onTouchEnd={stopDrawingRectangle}
       />
     </CanvasWrapper>
   );
