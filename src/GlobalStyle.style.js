@@ -64,6 +64,11 @@ export const Button = styled.button`
     background-color: #72a4c2;
     color: #fff;
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `;
 
 export const TextInput = styled.input`

@@ -126,7 +126,9 @@ const ImageEditor = () => {
         onChange={handleLabelChange}
       />
 
-      <Button type="submit">save</Button>
+      <Button disabled={!newLable || !newPoints} type="submit">
+        save
+      </Button>
     </ImageEditorContainer>
   );
 };
