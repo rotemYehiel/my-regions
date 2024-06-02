@@ -41,7 +41,7 @@ const ImageEditor = () => {
     }
 
     return () => {
-      reset();
+      if (currentImage) reset();
     };
   }, [currentImage]);
 
