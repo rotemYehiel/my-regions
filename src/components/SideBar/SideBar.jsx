@@ -4,14 +4,14 @@ import { addImage, getImages } from "../../store/actions/imagesAction";
 import { imagesSelector } from "../../store/selectors/imagesSelectors";
 import ImageList from "../ImageList/ImageList";
 import { SideBarContainer, UploadImageInput } from "./SideBar.style";
-import { currentImageIdSelector } from "../../store/selectors/editorSelectors";
+import { currentImageImgSelector } from "../../store/selectors/editorSelectors";
 import { setCurrentImage } from "../../store/actions/editorAction";
 import { Button } from "../../GlobalStyle.style";
 
 const SideBar = () => {
   const dispatch = useDispatch();
   const images = useSelector(imagesSelector);
-  const currentImageId = useSelector(currentImageIdSelector);
+  const currentImageImg = useSelector(currentImageImgSelector);
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -22,8 +22,8 @@ const SideBar = () => {
     dispatch(getImages());
   };
 
-  const changeCurrentImage = (id) => {
-    let newImage = images.filter((image) => image.id === id)[0];
+  const changeCurrentImage = (chosenImage) => {
+    let newImage = images.filter((image) => image.image === chosenImage)[0];
     dispatch(setCurrentImage(newImage));
   };
 
@@ -50,7 +50,7 @@ const SideBar = () => {
       {images && (
         <ImageList
           images={images}
-          currentImageId={currentImageId}
+          currentImageImg={currentImageImg}
           changeCurrentImage={changeCurrentImage}
         />
       )}

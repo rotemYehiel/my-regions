@@ -2,10 +2,10 @@ import React from "react";
 import { ImageListContainer, ImageItem } from "./ImageList.style";
 import { BASE_URL } from "../../constants/api";
 
-const ImageList = ({ images, currentImageId, changeCurrentImage }) => {
-  const handleSelectImage = (id) => {
-    if (id !== currentImageId) {
-      changeCurrentImage(id);
+const ImageList = ({ images, currentImageImg, changeCurrentImage }) => {
+  const handleSelectImage = (image) => {
+    if (image !== currentImageImg) {
+      changeCurrentImage(image);
     }
   };
 
@@ -20,8 +20,8 @@ const ImageList = ({ images, currentImageId, changeCurrentImage }) => {
                 ? `url(${BASE_URL}/${image.image})`
                 : `url(${image?.image})`
             }
-            $isCurrentImage={image.id === currentImageId}
-            onClick={() => handleSelectImage(image.id)}
+            $isCurrentImage={image.image === currentImageImg}
+            onClick={() => handleSelectImage(image.image)}
           />
         ))}
     </ImageListContainer>
