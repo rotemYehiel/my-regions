@@ -5,8 +5,6 @@ import {
 
 const initialState = {
   currentImage: null,
-  loading: true,
-  error: null,
 };
 
 const editorReducer = (state = initialState, action) => {

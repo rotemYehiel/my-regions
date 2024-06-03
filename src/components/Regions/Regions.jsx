@@ -12,7 +12,7 @@ const Regions = ({ regions }) => {
     <RegionsWrapper>
       <RegionsContainer>
         {regions &&
-          regions.map((region, index) => {
+          regions.map((region) => {
             const [startX, startY, width, height] = region.points;
 
             return (

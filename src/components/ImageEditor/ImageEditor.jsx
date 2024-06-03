@@ -44,6 +44,7 @@ const ImageEditor = () => {
     return () => {
       if (currentImage) reset();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentImage]);
 
   useEffect(() => {
