@@ -8,6 +8,7 @@ import {
   CurrentImageContainer,
   BackgroundImage,
   CurrentImageWrapper,
+  ActionPanel,
 } from "./ImageEditor.style";
 import Canvas from "../Canvas/Canvas";
 import { BASE_URL } from "../../constants/api";
@@ -95,9 +96,13 @@ const ImageEditor = () => {
   return (
     <ImageEditorContainer onSubmit={handleSubmit}>
       {currentImage && (
-        <CurrentImageWrapper>
-          <CurrentImageContainer ref={containerRef}>
+        <CurrentImageWrapper className="CurrentImageWrapper">
+          <CurrentImageContainer
+            ref={containerRef}
+            className="CurrentImageContainer"
+          >
             <BackgroundImage
+              className="BackgroundImage"
               src={
                 isEditImage
                   ? `${BASE_URL}/${currentImage?.image}`
@@ -120,15 +125,17 @@ const ImageEditor = () => {
           </CurrentImageContainer>
         </CurrentImageWrapper>
       )}
-      <TextInput
-        placeholder="enter label here"
-        value={newLable}
-        onChange={handleLabelChange}
-      />
+      <ActionPanel>
+        <TextInput
+          placeholder="Enter label here"
+          value={newLable}
+          onChange={handleLabelChange}
+        />
 
-      <Button disabled={!newLable || !newPoints} type="submit">
-        save
-      </Button>
+        <Button disabled={!newLable || !newPoints} type="submit">
+          save
+        </Button>
+      </ActionPanel>
     </ImageEditorContainer>
   );
 };

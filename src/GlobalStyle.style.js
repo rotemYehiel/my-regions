@@ -75,6 +75,5 @@ export const TextInput = styled.input`
   padding: 0.625rem 0.938rem;
   font-size: 1rem;
   border: 0.063rem solid #ccc;
-  width: 20%;
   border-radius: 0.25rem;
 `;

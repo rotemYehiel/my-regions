@@ -5,32 +5,68 @@ import { TextInput } from "../../GlobalStyle.style";
 export const ImageEditorContainer = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 0.6rem;
+  align-items: center;
+  justify-content: space-between;
   row-gap: 0.6rem;
+  box-sizing: border-box;
 
-  ${TextInput} {
-    width: 60%;
+  @media ${DEVICES.desktop} {
+    align-items: flex-start;
+    justify-content: unset;
   }
 `;
 
 export const CurrentImageWrapper = styled.div`
-  padding: 1.8rem;
-  overflow: hidden;
-  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 460px;
+  max-width: 100%;
+
+  @media ${DEVICES.tablet} {
+    width: 750px;
+  }
 
   @media ${DEVICES.desktop} {
-    padding: 1.28rem;
+    width: 1200px;
   }
 `;
 
 export const CurrentImageContainer = styled.div`
-  max-height: 100%;
-  height: fit-content;
   position: relative;
+  width: 100%;
+  height: 100%;
 `;
 
 export const BackgroundImage = styled.img`
   object-fit: contain;
   width: 100%;
   height: 100%;
+`;
+
+export const ActionPanel = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+  width: 100%;
+
+  ${TextInput} {
+    width: 70%;
+  }
+
+  @media ${DEVICES.tablet} {
+    ${TextInput} {
+      width: 50%;
+    }
+  }
+
+  @media ${DEVICES.desktop} {
+    align-items: flex-start;
+
+    ${TextInput} {
+      width: 50%;
+    }
+  }
 `;

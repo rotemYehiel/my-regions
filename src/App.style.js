@@ -11,12 +11,15 @@ export const AppLayout = styled.div`
   > :first-child {
     background-color: #b1d0e2;
     height: 50vh;
-    align-items: center;
+    box-sizing: border-box;
+    padding: 0.64rem;
   }
 
   > :nth-child(2) {
     background-color: #cde3f1;
     height: 50vh;
+    box-sizing: border-box;
+    padding: 0.64rem;
   }
 
   @media ${DEVICES.tablet} {
@@ -34,17 +37,16 @@ export const AppLayout = styled.div`
 
     > :first-child {
       order: 2;
-      padding: 0.64rem 2.56rem;
+      padding: 2.56rem;
       width: 80vw;
-      height: 100vh;
-      align-items: unset;
+      height: 100%;
     }
 
     > :nth-child(2) {
       order: 1;
+      padding: 2.56rem;
       width: 20vw;
-      height: 100vh;
-      padding: 0.64rem 2.56rem;
+      height: 100%;
     }
   }
 `;
