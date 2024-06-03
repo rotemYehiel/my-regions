@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { DEVICES } from "./constants/mediaQueries";
 
 export const GlobalStyle = createGlobalStyle`
 body {
@@ -56,18 +57,19 @@ export const Button = styled.button`
   border: 0.063rem solid #ccc;
   width: fit-content;
   border-radius: 0.25rem;
-
   background-color: #171d1c;
   color: white;
-
-  &:hover {
-    background-color: #72a4c2;
-    color: #fff;
-  }
 
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  @media ${DEVICES.desktop} {
+    &:hover {
+      background-color: #72a4c2;
+      color: #fff;
+    }
   }
 `;
 

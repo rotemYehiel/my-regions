@@ -12,7 +12,8 @@ export const SideBarContainer = styled.div`
   > ${Button} {
     position: absolute;
     right: 10%;
-    bottom: 5%;
+    top: 5%;
+    width: fit-content;
   }
 
   @media ${DEVICES.tablet} {
