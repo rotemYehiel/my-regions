@@ -21,15 +21,15 @@ export const CurrentImageWrapper = styled.div`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 460px;
+  width: 320px;
   max-width: 100%;
 
   @media ${DEVICES.tablet} {
-    width: 750px;
+    width: 500px;
   }
 
   @media ${DEVICES.desktop} {
-    width: 1200px;
+    width: 600px;
   }
 `;
 
