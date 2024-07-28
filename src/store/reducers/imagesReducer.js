@@ -3,6 +3,7 @@ import {
   FETCH_IMAGES,
   FETCH_IMAGES_FAILURE,
   FETCH_IMAGES_SUCCESS,
+  REMOVE_IMAGE,
   UPDATE_IMAGES,
 } from "../../constants/actionType";
 
@@ -46,6 +47,16 @@ const imagesReducer = (state = initialState, action) => {
         loading: false,
         images: [action.payload, ...state.images],
       };
+    case REMOVE_IMAGE:
+      let newImages = state.images.filter(
+        (image) => image.id !== action.payload
+      );
+      return {
+        ...state,
+        loading: false,
+        images: newImages,
+      };
+
     default:
       return state;
   }

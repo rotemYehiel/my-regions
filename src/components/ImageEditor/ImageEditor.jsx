@@ -15,6 +15,7 @@ import { BASE_URL } from "../../constants/api";
 import { getEmptyRegions, getRegions } from "../../store/actions/regionsAction";
 import Regions from "../Regions/Regions";
 import {
+  deleteImage,
   postImage,
   updateCurrentImage,
 } from "../../store/actions/editorAction";
@@ -84,6 +85,12 @@ const ImageEditor = () => {
     }
   };
 
+  const deleteHandler = () => {
+    if (currentImage?.id) {
+      dispatch(deleteImage(currentImage?.id));
+    }
+  };
+
   const reset = () => {
     setNewPoints(null);
     setNewLable("");
@@ -136,6 +143,7 @@ const ImageEditor = () => {
         <Button disabled={!newLable || !newPoints} type="submit">
           save
         </Button>
+        {currentImage?.id && <Button onClick={deleteHandler}>Delete</Button>}
       </ActionPanel>
     </ImageEditorContainer>
   );

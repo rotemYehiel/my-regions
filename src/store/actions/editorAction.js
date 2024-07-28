@@ -1,10 +1,13 @@
 import axios from "axios";
 import {
   BASE_URL,
+  DELETE_IMAGE_API,
   POST_IMAGE_API,
   UPDATE_IMAGE_REGIONS_API,
 } from "../../constants/api";
 import {
+  REMOVE_IMAGE,
+  RESET_CURRENTIMAGE,
   RESET_REGIONS,
   SET_CURRENTIMAGE,
   UPDATE_IMAGES,
@@ -72,6 +75,25 @@ export const postImage = (imageUrl, regions) => {
       dispatch({ type: UPDATE_IMAGES, payload: response.data });
     } catch (error) {
       console.error("Error post image:", error);
+    }
+  };
+};
+
+export const deleteImage = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`${BASE_URL}${DELETE_IMAGE_API}/${id}`);
+
+      if (response.status !== 200) {
+        throw new Error("Network response was not ok");
+      }
+
+      console.log({ response });
+
+      // dispatch({ type: RESET_CURRENTIMAGE }); // i need to set it with new image,so it's not good like this
+      dispatch({ type: REMOVE_IMAGE, payload: id });
+    } catch (error) {
+      console.error("Error delete image:", error);
     }
   };
 };

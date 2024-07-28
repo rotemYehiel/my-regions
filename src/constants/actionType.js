@@ -8,6 +8,7 @@ export const FETCH_IMAGES_SUCCESS = "FETCH_IMAGES_SUCCESS";
 export const FETCH_IMAGES_FAILURE = "FETCH_IMAGES_FAILURE";
 export const UPDATE_IMAGES = "UPDATE_IMAGES";
 export const ADD_IMAGE = "ADD_IMAGE";
+export const REMOVE_IMAGE = "REMOVE_IMAGE";
 
 // regionsReducer
 export const FETCH_REGIONS = "FETCH_REGIONS";
