@@ -1,27 +1,25 @@
-import axios from "axios";
-import { BASE_URL, GET_IMAGE_REGIONS_API } from "../../constants/api";
 import {
   FETCH_REGIONS,
   FETCH_REGIONS_FAILURE,
   FETCH_REGIONS_SUCCESS,
   GET_EMPTY_REGIONS,
 } from "../../constants/actionType";
+import { getDataFromLocalStorage } from "../../functions/utils";
+import { IMAGES } from "../../constants/localStorage";
 
 export const getRegions = (imageId) => {
   return async (dispatch) => {
     dispatch({ type: FETCH_REGIONS });
 
     try {
-      const response = await axios.get(
-        `${BASE_URL}${GET_IMAGE_REGIONS_API}/${imageId}`
-      );
+      const images = getDataFromLocalStorage(IMAGES);
+      const currentImage = images.filter((image) => image.id === imageId)[0];
 
-      if (response.status !== 200) {
-        throw new Error("Network response was not ok");
-      }
-
-      if (response.data) {
-        dispatch({ type: FETCH_REGIONS_SUCCESS, payload: response.data });
+      if (currentImage?.regions) {
+        dispatch({
+          type: FETCH_REGIONS_SUCCESS,
+          payload: currentImage?.regions,
+        });
       }
     } catch (error) {
       dispatch({ type: FETCH_REGIONS_FAILURE, payload: error.message });

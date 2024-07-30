@@ -1,8 +1,12 @@
 import React from "react";
 import { ImageListContainer, ImageItem } from "./ImageList.style";
-import { BASE_URL } from "../../constants/api";
 
-const ImageList = ({ images, currentImageImg, changeCurrentImage }) => {
+const ImageList = ({
+  images,
+  currentImageImg,
+  changeCurrentImage,
+  currentImageId,
+}) => {
   const handleSelectImage = (image) => {
     if (image !== currentImageImg) {
       changeCurrentImage(image);
@@ -11,16 +15,12 @@ const ImageList = ({ images, currentImageImg, changeCurrentImage }) => {
 
   return (
     <ImageListContainer>
-      {images.length &&
+      {images?.length > 0 &&
         images.map((image) => (
           <ImageItem
             key={image.image}
-            $imageUrl={
-              image?.id
-                ? `url(${BASE_URL}/${image.image})`
-                : `url(${image?.image})`
-            }
-            $isCurrentImage={image.image === currentImageImg}
+            $imageUrl={`url(${image?.image})`}
+            $isCurrentImage={image.id === currentImageId}
             onClick={() => handleSelectImage(image.image)}
           />
         ))}

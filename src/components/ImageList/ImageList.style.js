@@ -23,7 +23,7 @@ export const ImageItem = styled.div`
   background-image: ${({ $imageUrl }) => ($imageUrl ? $imageUrl : "unset")};
   border: 0.15rem solid;
   border-color: ${({ $isCurrentImage }) =>
-    $isCurrentImage ? "#5f7e92" : "transparent"};
+    $isCurrentImage ? "blue" : "transparent"};
   width: 10vh;
   height: 10vh;
   background-size: cover;

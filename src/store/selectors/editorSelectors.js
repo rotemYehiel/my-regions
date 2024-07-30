@@ -7,3 +7,8 @@ export const currentImageImgSelector = (state) => {
   const currentImage = currentImageSelector(state);
   return currentImage ? currentImage.image : null;
 };
+
+export const currentImageIdSelector = (state) => {
+  const currentImage = currentImageSelector(state);
+  return currentImage ? currentImage.id : null;
+};

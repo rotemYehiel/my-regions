@@ -50,15 +50,15 @@ export const ActionPanel = styled.div`
   flex-direction: column;
   gap: 0.6rem;
   align-items: center;
-  width: 100%;
+  width: ${({ $width }) => ($width ? `${$width}px` : "100%")};
 
   ${TextInput} {
-    width: 70%;
+    width: 100%;
   }
 
   @media ${DEVICES.tablet} {
     ${TextInput} {
-      width: 50%;
+      width: 100%;
     }
   }
 
@@ -66,7 +66,14 @@ export const ActionPanel = styled.div`
     align-items: flex-start;
 
     ${TextInput} {
-      width: 50%;
+      width: 100%;
     }
   }
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 `;

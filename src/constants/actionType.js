@@ -1,6 +1,5 @@
 // editorReducer
 export const SET_CURRENTIMAGE = "SET_CURRENTIMAGE";
-export const RESET_CURRENTIMAGE = "RESET_CURRENTIMAGE";
 
 // imagesReducer
 export const FETCH_IMAGES = "FETCH_IMAGES";
@@ -9,6 +8,7 @@ export const FETCH_IMAGES_FAILURE = "FETCH_IMAGES_FAILURE";
 export const UPDATE_IMAGES = "UPDATE_IMAGES";
 export const ADD_IMAGE = "ADD_IMAGE";
 export const REMOVE_IMAGE = "REMOVE_IMAGE";
+export const RESET_IMAGES = "RESET_IMAGES";
 
 // regionsReducer
 export const FETCH_REGIONS = "FETCH_REGIONS";

@@ -78,4 +78,5 @@ export const TextInput = styled.input`
   font-size: 1rem;
   border: 0.063rem solid #ccc;
   border-radius: 0.25rem;
+  box-sizing: border-box;
 `;

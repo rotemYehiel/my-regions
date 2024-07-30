@@ -5,6 +5,7 @@ import {
   FETCH_IMAGES_SUCCESS,
   REMOVE_IMAGE,
   UPDATE_IMAGES,
+  RESET_IMAGES,
 } from "../../constants/actionType";
 
 const initialState = {
@@ -34,7 +35,7 @@ const imagesReducer = (state = initialState, action) => {
         error: action.payload,
       };
     case UPDATE_IMAGES:
-      let imagesWithId = state.images.filter((image) => !!image.id);
+      let imagesWithId = state.images.filter((image) => image.id !== undefined);
 
       return {
         ...state,
@@ -51,10 +52,19 @@ const imagesReducer = (state = initialState, action) => {
       let newImages = state.images.filter(
         (image) => image.id !== action.payload
       );
+
       return {
         ...state,
         loading: false,
         images: newImages,
+      };
+
+    case RESET_IMAGES:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        images: null,
       };
 
     default:

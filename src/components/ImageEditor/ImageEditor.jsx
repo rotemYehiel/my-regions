@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
 import { currentImageSelector } from "../../store/selectors/editorSelectors";
@@ -9,9 +9,9 @@ import {
   BackgroundImage,
   CurrentImageWrapper,
   ActionPanel,
+  Buttons,
 } from "./ImageEditor.style";
 import Canvas from "../Canvas/Canvas";
-import { BASE_URL } from "../../constants/api";
 import { getEmptyRegions, getRegions } from "../../store/actions/regionsAction";
 import Regions from "../Regions/Regions";
 import {
@@ -35,8 +35,6 @@ const ImageEditor = () => {
   const [newLable, setNewLable] = useState("");
   const [isReset, setIsReset] = useState(false);
 
-  const isEditImage = useMemo(() => !!currentImage?.id, [currentImage]);
-
   useEffect(() => {
     if (currentImage) {
       getCurrentImageRegions();
@@ -53,7 +51,7 @@ const ImageEditor = () => {
   }, [windowWidth, windowHeight]);
 
   const getCurrentImageRegions = () => {
-    currentImage?.id
+    currentImage?.id !== undefined
       ? dispatch(getRegions(currentImage?.id))
       : dispatch(getEmptyRegions());
   };
@@ -73,9 +71,9 @@ const ImageEditor = () => {
     if (newPoints?.length && newLable) {
       const uniqueId = uuidv4();
       const newRegion = { id: uniqueId, label: newLable, points: newPoints };
-      let newRegions = [...regions, newRegion];
+      let newRegions = [...(regions || []), newRegion];
 
-      if (currentImage.id) {
+      if (currentImage?.id !== undefined) {
         dispatch(updateCurrentImage(currentImage.id, newRegions));
       } else {
         dispatch(postImage(currentImage.image, newRegions));
@@ -86,7 +84,7 @@ const ImageEditor = () => {
   };
 
   const deleteHandler = () => {
-    if (currentImage?.id) {
+    if (currentImage?.id !== undefined) {
       dispatch(deleteImage(currentImage?.id));
     }
   };
@@ -97,8 +95,8 @@ const ImageEditor = () => {
     setIsReset(true);
   };
 
-  if (!currentImage) {
-    return <div>Loading...</div>;
+  if (!currentImage?.image) {
+    return <div>No image to display</div>;
   }
 
   return (
@@ -111,11 +109,7 @@ const ImageEditor = () => {
           >
             <BackgroundImage
               className="BackgroundImage"
-              src={
-                isEditImage
-                  ? `${BASE_URL}/${currentImage?.image}`
-                  : currentImage.image
-              }
+              src={currentImage.image}
               alt={currentImage?.id}
               onLoad={updateContainerDimensions}
             />
@@ -133,17 +127,21 @@ const ImageEditor = () => {
           </CurrentImageContainer>
         </CurrentImageWrapper>
       )}
-      <ActionPanel>
+      <ActionPanel $width={containerWidth}>
         <TextInput
           placeholder="Enter label here"
           value={newLable}
           onChange={handleLabelChange}
         />
 
-        <Button disabled={!newLable || !newPoints} type="submit">
-          save
-        </Button>
-        {currentImage?.id && <Button onClick={deleteHandler}>Delete</Button>}
+        <Buttons>
+          <Button disabled={!newLable || !newPoints} type="submit">
+            save
+          </Button>
+          {currentImage?.id !== undefined && (
+            <Button onClick={deleteHandler}>Delete</Button>
+          )}
+        </Buttons>
       </ActionPanel>
     </ImageEditorContainer>
   );
